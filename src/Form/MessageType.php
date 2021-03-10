@@ -37,9 +37,6 @@ class MessageType extends AbstractType
                     return $er->sender($user); },
                 'attr' => ['data-select' => 'true']
             ])
-            ->add('subject', TextType::class, [
-                'label' => 'Sujet'
-            ])
             ->add('content', TextareaType::class, [
                 'label' => 'Message'
             ])

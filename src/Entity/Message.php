@@ -34,11 +34,6 @@ class Message
     private $to_id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $subject;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $content;
@@ -101,18 +96,6 @@ class Message
     public function setToId(?User $to_id): self
     {
         $this->to_id = $to_id;
-
-        return $this;
-    }
-
-    public function getSubject(): ?string
-    {
-        return $this->subject;
-    }
-
-    public function setSubject(string $subject): self
-    {
-        $this->subject = $subject;
 
         return $this;
     }
