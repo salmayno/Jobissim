@@ -224,8 +224,8 @@
 							</div>
 						</div>
 					</div>
-					{% for user in users %}
-						<div class="inbox_chat">
+					<div class="inbox_chat">
+						{% for user in users %}
 							<div class="chat_list">
 								<div class="chat_people">
 									<div class="chat_img">
@@ -239,9 +239,10 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						{% endfor %}
+
 					</div>
-				{% endfor %}
+				</div>
 
 				<!-- end -->
 
