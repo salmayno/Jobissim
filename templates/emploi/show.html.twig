@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Emploi {% endblock %}
+{% block body %}
+
+	<h2 class="font-weight-bold display-4 ">{{ emploi.nom }}
+	</h2>
+
+<div class="card mb-5">
+  <h5 class="card-header"><strong>Informations générales</strong></h5>
+  <div class="bodycard">
+    <p class="infog"><span class="showinfo">Démarrage : </span> le {{ emploi.date|date("d/m/Y") }} </p>
+    <p class="infog"><span class="showinfo">Lieu : </span> {{ emploi.lieu }}</p>
+    <p class="infog"><span class="showinfo">Type de contrat : </span> {{ emploi.typedecontrat }}</p>
+    {% if emploi.duree == 0 %} {% else %}
+      <p class="infog"><span class="showinfo">Durée : </span> {{ emploi.duree }} mois</p>{% endif %}
+    <p class="infog"><span class="showinfo">Salaire : </span> {{ (emploi.salaire)|number_format(2, ',','.') }} € /{{ (emploi.hm) }}</p>
+  </div>
+</div>
+
+<div class="card mb-5">
+  <h5 class="card-header"><strong>Mission du post</strong></h5>
+  <div class="bodycard">
+    <p class="infog">{{ emploi.mission }}</p>
+  </div>
+</div>
+
+<div class="card mb-5">
+  <h5 class="card-header"><strong>Prérequis</strong></h5>
+  <div class="bodycard">
+    <p class="infog">{{ emploi.prerequis }}</p>
+  </div>
+</div>
+
+
+<div class="card mb-5">
+  <h5 class="card-header"><strong>Organisme formateur</strong></h5>
+  <div class="bodycard">
+    <p class="infog">{{ emploi.organisme }}</p>
+  </div>
+</div>
+
+<div class="card mb-5">
+  <h5 class="card-header"><strong>Ressources</strong></h5>
+  <div class="bodycard">
+  {% if emploi.evaluation != '' %}
+    <a class="changepassword2" style="color: #2277ff !important;" href="/uploads/{{ emploi.evaluation }}" download>Fiche évaluation</a>
+    {% else %}
+      Aucune ressource disponible
+  {% endif %}
+  </div>
+</div>
+
+<div class="inscrire">
+    <a href="{{ path('emploi_candidature', {'id': emploi.id}) }}"><button class="btn btn-success mr-3">POSTULER</button></a>
+
+{% if app.user == emploi.auteur %}
+		<a href="{{ path('emploi_edit', {'id': emploi.id}) }}">
+			<button class="btn btn-secondary mr-3 mb-5">ÉDITER</button>
+		</a>
+{% endif %}
+
+    <a href="{{ path('emplois') }}"><button class="btn btn-secondary">RETOUR</button></a>
+</div>
+
+
+{% endblock %}

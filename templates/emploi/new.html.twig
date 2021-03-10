@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel emploi{% endblock %}
+
+{% block body %}
+
+<style>
+.btn.btn-primary {
+    height: 60px;
+    width: 150px;
+}
+
+.btn.btn-success, .btn.btn.btn-secondary {
+    height: 60px;
+    width: 150px;
+}
+</style>
+
+
+    	<h2 class="font-weight-bold display-4 ">NOUVEL
+		<span style="color: #2277ff">EMPLOI</span>
+	</h2>
+    <hr>
+
+{% if is_granted('ROLE_EMPLOYEUR_ILLIMITE') %}
+    <div class="newform">
+        {{ include('emploi/_form.html.twig') }}
+    </div>
+{% endif %}
+
+{% if is_granted('ROLE_EMPLOYEUR_1') %}
+{% if app.user.annonces == 0 %}
+    <div class="newform">
+        {{ include('emploi/_form.html.twig') }}
+    </div>
+    {% else %}
+        <p>Vous ne pouvez pas déposer plus d'annonces</p>
+{% endif %}
+{% endif %}
+
+{% if is_granted('ROLE_EMPLOYEUR_5') %}
+{% if app.user.annonces < 5 %}
+    <div class="newform">
+        {{ include('emploi/_form.html.twig') }}
+    </div>
+    {% else %}
+        <p>Vous ne pouvez pas déposer plus d'annonces</p>
+{% endif %}
+{% endif %}
+
+{% if is_granted('ROLE_EMPLOYEUR_10') %}
+{% if app.user.annonces < 10 %}
+    <div class="newform">
+        {{ include('emploi/_form.html.twig') }}
+    </div>
+    {% else %}
+        <p>Vous ne pouvez pas déposer plus d'annonces</p>
+{% endif %}
+{% endif %}
+
+
+    <a href="{{ path('message_index') }}"><button class="btn btn-primary mt-3">Voir tous les emplois</button></a>
+{% endblock %}
+

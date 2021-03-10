@@ -1,0 +1,19 @@
+<style>
+.btn.btn-success {
+    height: 36.5px;
+    width: 120px;
+}
+button {
+    background: none;
+    border: none;
+    margin-bottom: 2%;
+}
+.fa-chevron-circle-right {
+    color: #2277ff;
+}
+</style>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button><img src="{{ asset('img/send.png') }}" width="35px" alt=""></button>
+{{ form_end(form) }}

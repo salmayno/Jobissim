@@ -1,0 +1,22 @@
+SetEnv SHORT_OPEN_TAGS 0
+SetEnv REGISTER_GLOBALS 0
+SetEnv MAGIC_QUOTES 0
+SetEnv SESSION_AUTOSTART 0
+SetEnv ZEND_OPTIMIZER 1
+SetEnv PHP_VER 7_2
+ 
+RewriteEngine on
+RewriteBase /
+
+# La nouvelle règle
+RewriteCond %{HTTP_HOST} ^jobissim.com [NC]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L]
+
+RewriteCond %{HTTP_HOST} ^www.jobissim.com [NC]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L]
+
+# Votre règle fonctionne, ne la modifiez pas ;)
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]

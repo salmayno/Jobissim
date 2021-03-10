@@ -1,0 +1,356 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Abonnement
+{% endblock %}
+
+{% block body %}
+
+	<style>
+		.all {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+		.newform {
+			width: 300px;
+			height: 300px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			margin-right: 3%;
+            margin-top: 3%;
+		}
+
+		.newform2 {
+			width: 1010px;
+			height: 300px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: row;
+			margin-right: 3%;
+            margin-top: 3%;
+		}
+
+		h3 {
+			font-size: 22px;
+			font-weight: bold;
+		}
+
+		.prix {
+			font-size: 25px;
+			font-weight: bold;
+			margin-bottom: 5%;
+		}
+
+		.newform:hover {
+			background: white;
+			border: solid 1.6px black;
+		}
+
+		.newform2:hover {
+			background: white;
+			border: solid 3px #d8bb5d;
+		}
+
+		.table {
+			background: #f5f6f6;
+			margin-right: auto;
+			margin-left: auto;
+			color: #00000087 !important;
+			border-collapse: unset !important;
+		}
+		.fa-trash {
+			color: #00000087;
+			font-size: 18px;
+		}
+		.fa-minus-circle,
+		.fa-plus-circle {
+			font-size: 15px;
+			color: #2277ff;
+		}
+
+		.table-info {
+			background: #2277ff !important;
+		}
+		.btn.btn-success {
+			font-size: 16px;
+			font-weight: bold;
+			background: #71ce73 !important;
+			box-shadow: 0 3px 0 0 rgba(102, 172, 100, 1);
+			border: none;
+			width: 200px;
+		}
+		.fa-shopping-cart,
+		.fa-credit-card {
+			font-size: 20px;
+		}
+		b.clic1,
+		b.clic2:hover {
+			cursor: pointer;
+		}
+		@media(max-width: 800px) {
+			.newform,
+			.newform2 {
+				margin-right: 0 !important;
+			}
+            .newform2 {
+                width: 340px;
+            }
+		}
+	</style>
+
+
+	<h2 class="font-weight-bold display-4">
+		SOUSCRIRE
+		<span style="color: #2277ff">UN ABONNEMENT</span>
+	</h2>
+	<hr/>
+
+	<div class="all">
+		{% if is_granted('ROLE_EMPLOYEUR') %}
+		{% if is_granted('ROLE_EMPLOYEUR_1') %}
+		{% else %}
+			<div class="newform">
+				<a id="" role="link" type="button" style="color: black !important; max-height: none !important; text-align: center;" href="{{ path('freesub') }}">
+					<h3>1 annonce par mois gratuite</h3>
+					<div class="prix">0 € HT / mois
+					</div>
+				</a>
+
+			</div>
+		{% endif %}
+
+			<div class="newform">
+
+				<a id="checkout-button-price_1IQZXLAHwttT3nzwTL3T8KNe" style="color: black !important; max-height: none !important; text-align: center;" href="#">
+					<h3>5 annonces par mois</h3>
+					<div class="prix">200 € HT / mois
+					</div>
+					<p>+ CVThèque</p>
+					<p>+ Évaluation</p>
+				</a>
+
+			</div>
+
+
+			<div class="newform">
+				<a id="checkout-button-price_1IQZXzAHwttT3nzw3Qhclxf1" style="color: black !important; max-height: none !important; text-align: center;" href="#">
+					<h3>10 annonces par mois</h3>
+					<div class="prix">500 € HT / mois
+					</div>
+					<p>+ CVThèque</p>
+					<p>+ Évaluation</p>
+					<p>+ Statistiques</p>
+				</a>
+
+			</div>
+
+			<a id="checkout-button-price_1IQZV9AHwttT3nzwFJInHOCR" style="color: black !important; max-height: none !important; text-align: center; display: flex; justify-content: center; align-items: center;" href="#">
+				<div class="newform2">
+					<div class="info">
+						<h3 class="mr-4">Annonces illimitées</h3>
+						<div class="prix mr-4">1000 € HT / mois</div>
+					</div>
+					<div class="opt">
+					<p>+ CVThèque</p>
+					<p>+ Évaluation</p>
+					<p>+ Statistiques</p>
+                    <p>+ Visio conférence</p>
+					</div>
+				</div>
+			</a>
+
+
+			<div class="newform mr-0">
+				<a id="checkout-button-price_1IQZPbAHwttT3nzwUZM4ANIZ" style="color: black !important; max-height: none !important; text-align: center;" href="#">
+					<h3>Pack option</h3>
+					<div class="prix">99 € HT / mois</div>
+					<p>+ CVThèque</p>
+					<p>+ Évaluation</p>
+					<p>+ Statistiques</p>
+                    <p>+ Visio conférence</p>
+				</a>
+
+			</div>
+		{% endif %}
+
+
+		<!-- Formateurs -->
+		<div class="txta">
+			{% if is_granted('ROLE_FORMATEUR') %}
+
+				<div class="newform mr-4 mb-4">
+					<a style="color: black !important; max-height: none !important; text-align: center;" href="{{ path('contrat') }}">
+						<h3>Déposer des offres de formation *</h3>
+					</a>
+
+				</div>
+
+				<div class="texte">
+					<div style="font-size: 12px; max-width: 720px;">
+						<p>Jobissim ne percevra de rémunération que si le Participant s’inscrit à la formation, par l’entremise du Site internet JOBISSIM. En contrepartie de l’apport d’affaires réalisé par Jobissim, pendant toute l’exécution du contrat, Le Formateur s’engage à lui verser une commission correspondant à un pourcentage du prix HT payé par le Participant ou tout organisme tiers au Formateur pour la formation, définie selon la formule suivante :
+							<b class="clic1">lire la suite</b>
+							<b class="clic2">masquer la suite</b>
+						</p>
+						<p class="hide">
+							<b>- Pour les formations en présentiel ou dont plus de la moitié du temps de formation est réalisé en présentiel :</b>
+							montant HT de la commission due = 5% (cinq pourcent) x prix HT payé par le Participant ou tout organisme tiers au Formateur pour la formation
+						</p>
+
+						<p class="hide">
+							<b>- Pour les formations à distance ou dont plus de la moitié du temps de formation est réalisé à distance :</b>
+							montant HT de la commission due = 10% (dix pourcent) x prix HT payé par le Participant ou tout organisme tiers au Formateur pour la formation
+						</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="newform2">
+				<a id="checkout-button-price_1IQZPbAHwttT3nzwUZM4ANIZ" style="color: black !important; max-height: none !important; text-align: center; display: flex; justify-content: center; align-items: center;" href="#">
+					<div class="info">
+						<h3 class="mr-4">Pack option</h3>
+						<div class="prix mr-4">99 € HT / mois
+						</div>
+					</div>
+					<div class="opt">
+					<p>+ CVThèque</p>
+					<p>+ Évaluation</p>
+					<p>+ Statistiques</p>
+					<p>+ Visio conférence</p>
+					</div>
+				</a>
+			</div>
+		{% endif %}
+	</div>
+</div>{% endblock %}{% block javascript %}
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+	(function () {
+var stripe = Stripe('pk_live_51IPx0eAHwttT3nzwyWwaBkN5Uo4ibVGWvjbOoXIKfuO49OYOuTwWO9dXMoGjzBuWm2gGTgKSvazRqv9jCUXmEtt000zPviDmZA');
+
+var checkoutButton = document.getElementById('checkout-button-price_1IQZXzAHwttT3nzw3Qhclxf1');
+checkoutButton.addEventListener('click', function () {
+stripe.redirectToCheckout({
+lineItems: [
+{
+price: 'price_1IQZXzAHwttT3nzw3Qhclxf1',
+quantity: 1
+}
+],
+mode: 'subscription',
+successUrl: 'https://www.jobissim.com/subscription/dix',
+cancelUrl: 'https://www.jobissim.com/commande/erreur'
+}).then(function (result) {
+if (result.error) {
+var displayError = document.getElementById('error-message');
+displayError.textContent = result.error.message;
+}
+});
+});
+})();
+</script>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_51IPx0eAHwttT3nzwyWwaBkN5Uo4ibVGWvjbOoXIKfuO49OYOuTwWO9dXMoGjzBuWm2gGTgKSvazRqv9jCUXmEtt000zPviDmZA');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1IQZXLAHwttT3nzwTL3T8KNe');
+  checkoutButton.addEventListener('click', function () {
+
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1IQZXLAHwttT3nzwTL3T8KNe', quantity: 1}],
+      mode: 'subscription',
+
+      successUrl: 'https://www.jobissim.com/subscription/cinq',
+      cancelUrl: 'https://www.jobissim.com/commande/erreur',
+    })
+    .then(function (result) {
+      if (result.error) {
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_51IPx0eAHwttT3nzwyWwaBkN5Uo4ibVGWvjbOoXIKfuO49OYOuTwWO9dXMoGjzBuWm2gGTgKSvazRqv9jCUXmEtt000zPviDmZA');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1IQZV9AHwttT3nzwFJInHOCR');
+  checkoutButton.addEventListener('click', function () {
+
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1IQZV9AHwttT3nzwFJInHOCR', quantity: 1}],
+      mode: 'subscription',
+
+      successUrl: 'https://www.jobissim.com/subscription/illimite',
+      cancelUrl: 'https://www.jobissim.com/commande/erreur',
+    })
+    .then(function (result) {
+      if (result.error) {
+
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_51IPx0eAHwttT3nzwyWwaBkN5Uo4ibVGWvjbOoXIKfuO49OYOuTwWO9dXMoGjzBuWm2gGTgKSvazRqv9jCUXmEtt000zPviDmZA');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1IQZPbAHwttT3nzwUZM4ANIZ');
+  checkoutButton.addEventListener('click', function () {
+
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1IQZPbAHwttT3nzwUZM4ANIZ', quantity: 1}],
+      mode: 'subscription',
+
+      successUrl: 'https://www.jobissim.com/subscription/option',
+      cancelUrl: 'https://www.jobissim.com/commande/erreur',
+    })
+    .then(function (result) {
+      if (result.error) {
+
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function () {
+$('p.hide').hide();
+$('b.clic2').hide();
+
+$('b.clic1').click(function () {
+$('b.clic1').hide();
+$('b.clic2').toggle(400);
+$('p.hide').toggle(400);
+return false;
+});
+
+$('b.clic2').click(function () {
+$('b.clic2').hide();
+$('b.clic1').toggle(400);
+$('p.hide').toggle(400);
+return false;
+});
+
+});
+</script>
+{% endblock %}

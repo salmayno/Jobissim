@@ -1,0 +1,29 @@
+<style>
+	.btn.btn-success {
+		height: 60px;
+		width: 150px;
+	}
+</style>
+
+{{ form_start(form) }}
+{{form_row(form.category) }}
+{{form_row(form.nom) }}
+{{form_row(form.lieu) }}
+{{form_row(form.date) }}
+{{form_row(form.duree) }}
+{{form_row(form.prix) }}
+{{form_row(form.places) }}
+{{form_row(form.diplomes) }}
+{{form_row(form.objectif) }}
+{{form_row(form.prerequis) }}
+{{form_row(form.contenu) }}
+{{form_row(form.organisme) }}
+{{form_row(form.eligible) }}
+{{ form_row(form.imageFile)}}
+{% if is_granted('ROLE_EVALUATION') %}
+	{{ form_row(form.evaluationFile) }}
+{% else %}
+	<span style="display: none">{{ form_row(form.evaluationFile) }}</span>
+{% endif %}
+{{ form_row(form.submit)}}
+{{ form_end(form) }}

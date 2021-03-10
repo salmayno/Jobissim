@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résilier un abonnement
+{% endblock %}
+
+{% block body %}
+
+	<style>
+	</style>
+
+
+	<h2 class="font-weight-bold display-4 ">RÉSILIER
+		<span style="color: #2277ff">UN ABONNEMENT</span>
+	</h2>
+	<hr>
+
+	<div class="newform mt-4">
+		{{ form(form) }}
+	</div>
+
+	<a href="{{ path('account') }}">
+		<button class="btn btn-info mt-3">Annuler</button>
+	</a>
+{% endblock %}

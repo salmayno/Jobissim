@@ -1,0 +1,16 @@
+<style>
+.fa-trash {
+    color: #ff0000e3;
+    font-size: 18px;
+}
+button {
+    background: none;
+    border: none;
+}
+</style>
+
+<form method="post" action="{{ path('cvtheque_delete', {'id': cvtheque.id}) }}" onsubmit="return confirm('Supprimer le cv ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cvtheque.id) }}">
+    <button class="btn btn-danger mt-3">Supprimer</button>
+</form>

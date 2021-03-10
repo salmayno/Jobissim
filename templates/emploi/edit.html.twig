@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer L'EMPLOI{% endblock %}
+
+{% block body %}
+
+<style>
+.btn.btn-primary, .btn.btn-danger {
+    font-size: 16px;
+    height: 30px;
+    width: 100px;
+    font-weight: bold;
+}
+.form-control {
+    background: #f5f6f6 !important;
+}
+</style>
+    <h2 class="font-weight-bold display-4 ">ÉDITER
+		<span style="color: #2277ff">L'EMPLOI</span>
+	</h2>
+	<hr>
+
+    {{ include('emploi/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+    <a href="{{ path('emplois') }}">
+		<button class="btn btn-primary mt-3">Retour</button>
+	</a>
+
+    {{ include('emploi/_delete_form.html.twig') }}
+{% endblock %}

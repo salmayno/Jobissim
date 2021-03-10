@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau CV
+{% endblock %}
+
+{% block body %}
+
+	<style>
+		.btn.btn-primary {
+			height: 60px;
+			width: 150px;
+		}
+
+		.btn.btn-success,
+		.btn.btn.btn-secondary {
+			height: 60px;
+			width: 150px;
+		}
+	</style>
+
+
+	<h2 class="font-weight-bold display-4 ">NOUVEAU
+		<span style="color: #2277ff">CV</span>
+	</h2>
+	<hr>
+
+		{% if app.user.cv != '' %}
+	<div class="newform">
+			{{ include('cvtheque/_form.html.twig') }}
+	</div>
+		{% endif %}
+	
+		{% if app.user.cv == '' %}
+	<div class="newform">
+			<h5>Ajouter un cv</h5>
+			{{ form(formcv) }}
+	</div>
+		{% endif %}
+
+
+	<a href="{{ path('cvtheques') }}">
+		<button class="btn btn-primary mt-3">Voir tous les cv</button>
+	</a>
+{% endblock %}
